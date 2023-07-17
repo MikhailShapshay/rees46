@@ -10,7 +10,12 @@ docker-compose up -d</b>
 Установите зависимости:<br>
 <b>composer install</b>
 
-Файл настройки доступа к БД: config/db.xml
+Откройте:
+<br>
+<b>docker exec -it rees46_app bash</b>
+
+Файл настройки доступа к БД:<br>
+<b>config/db.xml</b>
 
 Для первоначального запуска:<br>
 <b>php month_parser.php start</b><br>
