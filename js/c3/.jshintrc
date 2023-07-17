@@ -16,10 +16,8 @@
     "bitwise": false,
     "asi": true,
     "laxbreak": true,
-
     "browser": true,
     "jasmine": true,
-
     "globals": {
         "d3": false,
         "require": false

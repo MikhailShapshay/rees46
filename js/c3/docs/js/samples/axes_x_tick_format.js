@@ -6,12 +6,14 @@ var chart = c3.generate({
             ['sample', 30, 200, 100, 400, 150, 250]
         ]
     },
-    axis : {
-        x : {
-            type : 'timeseries',
+    axis: {
+        x: {
+            type: 'timeseries',
             tick: {
-                format: function (x) { return x.getFullYear(); }
-              //format: '%Y' // format string is also available for timeseries data
+                format: function (x) {
+                    return x.getFullYear();
+                }
+                //format: '%Y' // format string is also available for timeseries data
             }
         }
     }

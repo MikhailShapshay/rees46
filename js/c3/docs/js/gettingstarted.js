@@ -170,6 +170,7 @@ var chart4_3 = c3.generate({
 function example4_3_1() {
     chart4_3.show(['data2', 'data3']);
 }
+
 function example4_3_2() {
     chart4_3.hide(['data2', 'data3']);
 }

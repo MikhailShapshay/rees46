@@ -1,9 +1,9 @@
 
 body {
-  text-align: center;
+    text-align: center;
 }
 
 #chart {
-  width: 720px;
-  margin: 24px auto;
+    width: 720px;
+    margin: 24px auto;
 }

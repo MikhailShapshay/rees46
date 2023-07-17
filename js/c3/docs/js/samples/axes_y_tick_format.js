@@ -4,8 +4,8 @@ var chart = c3.generate({
             ['sample', 30, 200, 100, 400, 150, 2500]
         ]
     },
-    axis : {
-        y : {
+    axis: {
+        y: {
             tick: {
                 format: d3.format("$,")
 //                format: function (d) { return "$" + d; }

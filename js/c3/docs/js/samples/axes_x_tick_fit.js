@@ -6,9 +6,9 @@ var chart = c3.generate({
             ['sample', 30, 100, 400, 150],
         ]
     },
-    axis : {
-        x : {
-            type : 'timeseries',
+    axis: {
+        x: {
+            type: 'timeseries',
             tick: {
                 fit: true,
                 format: "%e %b %y"

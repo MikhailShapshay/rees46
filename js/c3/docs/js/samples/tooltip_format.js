@@ -8,8 +8,8 @@ var chart = c3.generate({
             data2: 'y2'
         }
     },
-    axis : {
-        y : {
+    axis: {
+        y: {
             tick: {
                 format: d3.format("s")
             }
@@ -23,7 +23,9 @@ var chart = c3.generate({
     },
     tooltip: {
         format: {
-            title: function (d) { return 'Data ' + d; },
+            title: function (d) {
+                return 'Data ' + d;
+            },
             value: function (value, ratio, id) {
                 var format = id === 'data1' ? d3.format(',') : d3.format('$');
                 return format(value);

@@ -10,6 +10,10 @@
   "development": {},
   "license": "MIT",
   "main": "c3.js",
-  "scripts": ["c3.js"],
-  "styles": ["c3.css"]
+  "scripts": [
+    "c3.js"
+  ],
+  "styles": [
+    "c3.css"
+  ]
 }

@@ -1,4 +1,4 @@
-import { c3 } from './core'
+import {c3} from './core'
 
 import './polyfill'
 import './api.axis'

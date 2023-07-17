@@ -13,9 +13,9 @@ node14: &node14
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
-    - npm-4-{{ checksum "package.json" }}
-    # fallback to using the latest cache if no exact match is found
-    - npm-4-
+      - npm-4-{{ checksum "package.json" }}
+      # fallback to using the latest cache if no exact match is found
+      - npm-4-
 
 save_modules_cache: &save_modules_cache
   save_cache:

@@ -5,7 +5,7 @@ require.config({
     }
 });
 
-require(["d3", "c3"], function(d3, c3) {
+require(["d3", "c3"], function (d3, c3) {
 
     window.chart = c3.generate({
         data: {

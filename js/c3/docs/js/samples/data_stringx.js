@@ -1,6 +1,6 @@
 var chart = c3.generate({
     data: {
-        x : 'x',
+        x: 'x',
         columns: [
             ['x', 'www.site1.com', 'www.site2.com', 'www.site3.com', 'www.site4.com'],
             ['download', 30, 200, 100, 400],

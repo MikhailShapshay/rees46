@@ -27,7 +27,7 @@ var defaultMessage = $('#message').html(), currentIndex = 0, timer, duration = 1
         setMessage('Select point for index 2 of data1');
     },
     function () {
-        chart.select(['data1'], [4,6]);
+        chart.select(['data1'], [4, 6]);
         setMessage('Select point for index 4,6 of data1');
     },
     function () {
@@ -59,11 +59,11 @@ var defaultMessage = $('#message').html(), currentIndex = 0, timer, duration = 1
         setMessage('Update data2');
     },
     function () {
-        chart.regions([{start:1,end:3}]);
+        chart.regions([{start: 1, end: 3}]);
         setMessage('Add region from 1 to 3');
-        },
+    },
     function () {
-        chart.regions.add([{start:6}]);
+        chart.regions.add([{start: 6}]);
         setMessage('Add region from 6 to end');
     },
     function () {
@@ -71,11 +71,11 @@ var defaultMessage = $('#message').html(), currentIndex = 0, timer, duration = 1
         setMessage('Clear regions');
     },
     function () {
-        chart.xgrids([{value: 1, text:'Label 1'}, {value: 4, text: 'Label 4'}]);
+        chart.xgrids([{value: 1, text: 'Label 1'}, {value: 4, text: 'Label 4'}]);
         setMessage('Add x grid lines for 1, 4');
     },
     function () {
-        chart.ygrids.add([{value: 450, text:'Label 450'}]);
+        chart.ygrids.add([{value: 450, text: 'Label 450'}]);
         setMessage('Add y grid lines for 450');
     },
     function () {
@@ -92,7 +92,7 @@ var defaultMessage = $('#message').html(), currentIndex = 0, timer, duration = 1
         setMessage('Show as bar chart');
     },
     function () {
-        chart.groups([['data2','data3']]);
+        chart.groups([['data2', 'data3']]);
         setMessage('Grouping data2 and data3');
     },
     function () {
@@ -150,13 +150,13 @@ var defaultMessage = $('#message').html(), currentIndex = 0, timer, duration = 1
 ];
 
 function setMessage(message) {
-    document.getElementById('message').innerHTML = '<a id="demoMessage" class="button small secondary" onclick="stopDemo();" title="Stop Demo" onclick="stopDemo();">'+message+'</button>';
+    document.getElementById('message').innerHTML = '<a id="demoMessage" class="button small secondary" onclick="stopDemo();" title="Stop Demo" onclick="stopDemo();">' + message + '</button>';
 //        $('#demoMessage').tooltip('toggle');
 }
 
 function startDemo() {
     setMessage('Starting Demo..');
-    timer = setInterval(function(){
+    timer = setInterval(function () {
         if (currentIndex == demos.length) currentIndex = 0;
         demos[currentIndex++]();
     }, duration);

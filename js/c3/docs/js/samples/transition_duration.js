@@ -39,7 +39,7 @@ setTimeout(function () {
 
 setTimeout(function () {
     chart.load({
-        columns:[
+        columns: [
             ['data1', null, 30, 20, 50, 40, 60, 50, 100, 200]
         ]
     });

@@ -38,8 +38,8 @@ setTimeout(function () {
 
 setTimeout(function () {
     chart.load({
-        columns:[
-            ['data4', 30, 20, 50, 40, 60, 50,100,200]
+        columns: [
+            ['data4', 30, 20, 50, 40, 60, 50, 100, 200]
         ],
         type: 'bar'
     });
@@ -53,7 +53,7 @@ setTimeout(function () {
 
 setTimeout(function () {
     chart.load({
-        columns:[
+        columns: [
             ['data2', null, 30, 20, 50, 40, 60, 50]
         ]
     });

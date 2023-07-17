@@ -8,11 +8,11 @@ var chart = c3.generate({
 });
 
 setTimeout(function () {
-    chart.resize({height:100, width:300})
+    chart.resize({height: 100, width: 300})
 }, 1000);
 
 setTimeout(function () {
-    chart.resize({height:200})
+    chart.resize({height: 200})
 }, 2000);
 
 setTimeout(function () {

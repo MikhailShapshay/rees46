@@ -15,7 +15,7 @@ var chart = c3.generate({
             data6: 'area',
         },
         groups: [
-            ['data1','data2']
+            ['data1', 'data2']
         ]
     }
 });

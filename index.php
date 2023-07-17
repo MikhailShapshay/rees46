@@ -1,11 +1,12 @@
 <?php
+
 use src\CurrencyParsing;
 use src\BDfunc;
 
 require_once 'src/CurrencyParsing.php';
 require_once 'src/BDfunc.php';
 
-require  './vendor/autoload.php';
+require './vendor/autoload.php';
 
 $dbc = new BDFunc;
 ?>
@@ -26,7 +27,7 @@ $dbc = new BDFunc;
 <script src="./js/c3js.org_js_d3-5.8.2.min-c5268e33.js" charset="utf-8"></script>
 <script src="./js/c3/c3.min.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         var chart = c3.generate({
             bindto: '#chart',
             data: {

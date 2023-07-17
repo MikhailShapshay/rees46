@@ -18,9 +18,13 @@ function toggle(id) {
 
 d3.select('.container').insert('div', '.chart').attr('class', 'legend').selectAll('span')
     .data(['data1', 'data2', 'data3'])
-  .enter().append('span')
-    .attr('data-id', function (id) { return id; })
-    .html(function (id) { return id; })
+    .enter().append('span')
+    .attr('data-id', function (id) {
+        return id;
+    })
+    .html(function (id) {
+        return id;
+    })
     .each(function (id) {
         d3.select(this).style('background-color', chart.color(id));
     })

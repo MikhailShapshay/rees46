@@ -1,4 +1,5 @@
 ﻿var chart;
+
 function refresh() {
     if (suspendRefresh)
         return;
@@ -13,6 +14,7 @@ function refresh() {
 function getChart() {
     return chart;
 }
+
 function main() {
     var last = 0;
     var max = 10000;

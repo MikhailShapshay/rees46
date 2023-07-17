@@ -24,8 +24,8 @@ var chart = c3.generate({
             data2: 'y2'
         }
     },
-    axis : {
-        y : {
+    axis: {
+        y: {
             tick: {
                 format: d3locale.format(",")
             }

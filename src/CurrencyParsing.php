@@ -1,4 +1,5 @@
 <?php
+
 namespace src;
 
 use src\BDfunc;
@@ -23,18 +24,18 @@ class CurrencyParsing
      * @param string $date
      * @param int $days
      */
-    public function parse(string $date, int $days = 1) :void
+    public function parse(string $date, int $days = 1): void
     {
         $next_date = $date;
-        for ($i = 1; $i<=$days; $i++){
-            echo date("d/m/Y", strtotime($this->getFormatDate($next_date).'- 1 day'))."<br>";
-            if($i > 1)
-                $next_date = date("d/m/Y", strtotime($this->getFormatDate($next_date).'- 1 day'));
-            $xml = file_get_contents($this->url.$next_date);
+        for ($i = 1; $i <= $days; $i++) {
+            echo date("d/m/Y", strtotime($this->getFormatDate($next_date) . '- 1 day')) . "<br>";
+            if ($i > 1)
+                $next_date = date("d/m/Y", strtotime($this->getFormatDate($next_date) . '- 1 day'));
+            $xml = file_get_contents($this->url . $next_date);
             $feed = simplexml_load_string($xml);
-            foreach ($feed->Valute as $valute){
+            foreach ($feed->Valute as $valute) {
                 $valute_code = $valute->CharCode;
-                if(in_array($valute_code, $this->valute_code_arr))
+                if (in_array($valute_code, $this->valute_code_arr))
                     $this->setValuteItem($next_date, $valute);
             }
 
@@ -45,14 +46,14 @@ class CurrencyParsing
      * @param string $date
      * @param int $days
      */
-    public function parseWorker(string $date, int $days = 1) :void
+    public function parseWorker(string $date, int $days = 1): void
     {
         $next_date = $date;
         $urls = [];
-        for ($i = 1; $i<=$days; $i++){
-            if($i > 1)
-                $next_date = date("d/m/Y", strtotime($this->getFormatDate($next_date).'- 1 day'));
-            $urls[] = $this->url.$next_date;
+        for ($i = 1; $i <= $days; $i++) {
+            if ($i > 1)
+                $next_date = date("d/m/Y", strtotime($this->getFormatDate($next_date) . '- 1 day'));
+            $urls[] = $this->url . $next_date;
         }
 
         $worker = new Worker();
@@ -62,10 +63,10 @@ class CurrencyParsing
             foreach ($urls as $url) {
                 $xml = file_get_contents($url);
                 $feed = simplexml_load_string($xml);
-                foreach ($feed->Valute as $valute){
+                foreach ($feed->Valute as $valute) {
                     $valute_code = $valute->CharCode;
                     $next_date = str_replace($this->url, "", $url);
-                    if(in_array($valute_code, $this->valute_code_arr))
+                    if (in_array($valute_code, $this->valute_code_arr))
                         $this->setValuteItem($next_date, $valute);
                     //echo "Запрос для URL: $url завершен.";
                 }
@@ -79,22 +80,22 @@ class CurrencyParsing
      * @param string $next_date
      * @param string $valute
      */
-    protected function setValuteItem($next_date, $valute) :void
+    protected function setValuteItem($next_date, $valute): void
     {
         $dbc = new BDFunc;
         $rows = $dbc->dbselect(array(
-                "table"=>"currency",
-                "select"=>"*",
-                "where"=>"cur_date = '". date("Y-m-d",strtotime($this->getFormatDate($next_date)))."' AND valute = '".$valute->CharCode."'"
+                "table" => "currency",
+                "select" => "*",
+                "where" => "cur_date = '" . date("Y-m-d", strtotime($this->getFormatDate($next_date))) . "' AND valute = '" . $valute->CharCode . "'"
             )
         );
         $numRows = $dbc->count;
 
-        if ($numRows <= 0){
+        if ($numRows <= 0) {
             $exchange = str_replace(",", ".", $valute->Value);
-            echo $valute->CharCode." = ".$exchange."<br>";
-            $dbc->element_create("currency",array(
-                "cur_date" => date("Y-m-d",strtotime($this->getFormatDate($next_date))),
+            echo $valute->CharCode . " = " . $exchange . "<br>";
+            $dbc->element_create("currency", array(
+                "cur_date" => date("Y-m-d", strtotime($this->getFormatDate($next_date))),
                 "valute" => $valute->CharCode,
                 "exchange" => $exchange));
         }
@@ -109,13 +110,14 @@ class CurrencyParsing
     {
         $date_arr = explode("/", $date);
 
-        return $date_arr[2].'-'.$date_arr[1].'-'.$date_arr[0];
+        return $date_arr[2] . '-' . $date_arr[1] . '-' . $date_arr[0];
     }
 
     /**
      * @return string
      */
-    public function chartDataInMonth(){
+    public function chartDataInMonth()
+    {
         $dbc = new BDFunc;
         $outData = '';
         $x_data = [];
@@ -123,21 +125,21 @@ class CurrencyParsing
         $eur_data = [];
 
         $rows = $dbc->dbselect(array(
-                "table"=>"currency",
-                "select"=>"*",
-                "where"=>"cur_date <= '". date("Y-m-d")."' AND cur_date > '". date("Y-m-d", strtotime('- 30 days'))."'",
-                "order"=>"cur_date ASC"
+                "table" => "currency",
+                "select" => "*",
+                "where" => "cur_date <= '" . date("Y-m-d") . "' AND cur_date > '" . date("Y-m-d", strtotime('- 30 days')) . "'",
+                "order" => "cur_date ASC"
             )
         );
         $numRows = $dbc->count;
-        if ($numRows > 0){
+        if ($numRows > 0) {
             $cur_date = '';
-            foreach($rows as $row){
-                if($row["cur_date"] != $cur_date){
+            foreach ($rows as $row) {
+                if ($row["cur_date"] != $cur_date) {
                     $cur_date = $row["cur_date"];
-                    $x_data[] = "'".$cur_date."'";
+                    $x_data[] = "'" . $cur_date . "'";
                 }
-                switch ($row["valute"]){
+                switch ($row["valute"]) {
                     case "USD":
                         $usd_data[] = $row["exchange"];
                         break;
@@ -146,9 +148,9 @@ class CurrencyParsing
                         break;
                 }
             }
-            $outData = "['x',".implode(',', $x_data)."],";
-            $outData .= "['USD',".implode(',', $usd_data)."],";
-            $outData .= "['EUR',".implode(',', $eur_data)."]";
+            $outData = "['x'," . implode(',', $x_data) . "],";
+            $outData .= "['USD'," . implode(',', $usd_data) . "],";
+            $outData .= "['EUR'," . implode(',', $eur_data) . "]";
         }
         return $outData;
     }

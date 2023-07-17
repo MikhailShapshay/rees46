@@ -5,7 +5,7 @@ var chart = c3.generate({
         ]
     },
     regions: [
-        {start:0, end:1},
-        {start:2, end:4, class:'foo'}
+        {start: 0, end: 1},
+        {start: 2, end: 4, class: 'foo'}
     ]
 });
