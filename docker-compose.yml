@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    container_name: rees46_nginx
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    container_name: rees46_app
+
+  db:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: rees46_db
+      MYSQL_ROOT_PASSWORD: rees46_db
+    ports:
+      - 8101:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: rees46_db
