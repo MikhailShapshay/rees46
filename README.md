@@ -12,7 +12,7 @@ docker-compose up -d</b>
 
 Откройте:
 <br>
-<b>docker exec -it rees46_app bash</b>
+<b>http://localhost/</b>
 
 Файл настройки доступа к БД:<br>
 <b>config/db.xml</b>
